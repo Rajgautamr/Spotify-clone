@@ -52,3 +52,12 @@ export interface Product{
     image?: string;
     metadata?:Stripe.Metadata;
 }
+
+export interface Song{
+    id: string;
+    user_id:string;
+    title: string;
+    author: string;
+    song_path: string;
+    img_path: string;
+}
