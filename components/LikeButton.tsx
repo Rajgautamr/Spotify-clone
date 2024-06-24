@@ -58,7 +58,7 @@ const LikeButton :React.FC<LikeButtonProps> = ({
             }
             else{
                 setIsLiked(true);
-                toast.success('Liked!');
+                toast.success('Added to liked songs!');
             }
         }
         router.refresh();
