@@ -20,6 +20,9 @@ const Header :React.FC<HeaderProps>= ({
     children,
     className,
 }) => {
+    const redirectToSearch = () => {
+        router.push('/search');
+    };
     const authModal = useAuthModal();
     const router =useRouter();
     const supabaseClient = useSupabaseClient();
@@ -49,7 +52,7 @@ const Header :React.FC<HeaderProps>= ({
                         <HiHome className="text-black" size={20}/>
                     </button>
                     <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
-                        <BiSearch className="text-black" size={20}/>
+                        <BiSearch onClick={redirectToSearch} className="text-black" size={20}/>
                     </button>
                 </div>
                 <div className="flex justify-between items-center gap-x-4">
