@@ -23,6 +23,9 @@ const Header :React.FC<HeaderProps>= ({
     const redirectToSearch = () => {
         router.push('/search');
     };
+    const redirectToHome = () => {
+        router.push('/');
+    };
     const authModal = useAuthModal();
     const router =useRouter();
     const supabaseClient = useSupabaseClient();
@@ -49,7 +52,7 @@ const Header :React.FC<HeaderProps>= ({
                 </div>
                 <div className="flex md:hidden gap-x-2 items-center">
                     <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
-                        <HiHome className="text-black" size={20}/>
+                        <HiHome onClick={redirectToHome} className="text-black" size={20}/>
                     </button>
                     <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
                         <BiSearch onClick={redirectToSearch} className="text-black" size={20}/>
