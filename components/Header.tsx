@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import { RxCaretLeft , RxCaretRight } from "react-icons/rx";
 import { HiHome } from "react-icons/hi";
-import { BiSearch } from "react-icons/bi";
+import { BiPlus, BiSearch } from "react-icons/bi";
 import Button from './Button';
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
@@ -11,6 +11,7 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import AuthModal from "./AuthModal";
 import { FaUserAlt } from "react-icons/fa";
 import toast from "react-hot-toast";
+import useUploadModal from "@/hooks/useUploadModal";
 
 interface HeaderProps {
     children:React.ReactNode;
@@ -20,6 +21,7 @@ const Header :React.FC<HeaderProps>= ({
     children,
     className,
 }) => {
+    const uploadModal = useUploadModal();
     const redirectToSearch = () => {
         router.push('/search');
     };
@@ -39,6 +41,14 @@ const Header :React.FC<HeaderProps>= ({
             toast.success('Logged out!')
         }
            }
+           const onclick = () =>{
+            if(!user){
+                return authModal.onOpen();
+            }
+    
+            return uploadModal.onOpen();
+        };
+    
     return ( 
         <div className={twMerge('h-fit bg-gradient-to-b from-emerald-800 p-6 ', className)}>
             <div className="w-full mb-4 flex item-center justify-between">
@@ -56,6 +66,9 @@ const Header :React.FC<HeaderProps>= ({
                     </button>
                     <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
                         <BiSearch onClick={redirectToSearch} className="text-black" size={20}/>
+                    </button>
+                    <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
+                        <BiPlus onClick={onclick} className="text-black" size={20}/>
                     </button>
                 </div>
                 <div className="flex justify-between items-center gap-x-4">

@@ -35,7 +35,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
     const nextSong = player.ids[currentIndex + 1]
 
     if (!nextSong) {
-      return player.setId(player.ids[0])
+      return player.setId(player.ids[1-1])
     }
 
     player.setId(nextSong)
