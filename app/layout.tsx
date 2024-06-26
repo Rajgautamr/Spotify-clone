@@ -27,7 +27,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head> 
-        <link rel="icon" href="/icon.jpg" className="w-32 h-32"/>
+        <link rel="icon" href="/icon.png" className="w-32 h-32"/>
       </head>
       <body className={font.className}>
         <ToasterProvider/>
